@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "status": "candidate_unaccepted",
+  "source": "c24b15388855943dbf33391d65ac3319461d90c7",
+  "workflow_commit": "a449dd64476b560a124e8efd380cc59aab38fa91",
+  "run_id": 45797623456,
+  "job_id": 139832240179,
+  "attempt": 1,
+  "archive_path": "hip/evidence/candidates/c24b15388855943dbf33391d65ac3319461d90c7/archive/4315fa982499a73f3c9f9750327c02c4db7e2fec8ff029f45831632e67aba6d4.json",
+  "archive_git_blob": "cf53d3a0f49f8894fcd7501f32fd2181c609059a",
+  "archive_sha256": "b4e2808f740d97a2e7a4a7798a258d483dfe0306167a2cbb5d017ecbcf772508",
+  "graph_sha256": "f939c7aacd925d7c685173aef3467bc05c24891a5eeac626502ada1253396f59",
+  "receipt_sha256": "27ed6114ac39a28994b558f5c281c9fdae75e27cb9fe9062e72fac496a8b5004",
+  "nodes": 30,
+  "edges": 52,
+  "features": 2,
+  "artifact_id": 15105686958,
+  "artifact_zip_sha256": "454cbc973258d9dfeb820842b88f450305d2595ac6678d246d7509c77323e0b3",
+  "notes": "Public runner Graphify MCP and Veraphify verification passed. Archive bytes extracted from ordered public job-log chunks; no accepted release claimed."
+}
