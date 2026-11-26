@@ -13,6 +13,18 @@
         "Run mechanical tests and read-only archive hash verification on standard public GitHub-hosted runner, record exact tested SHA and run attempt.",
         "For v0.0.0.1 only: owner-approved CodeRabbit exact-SHA independent code review plus existing public-runner evidence and Head/owner disposition replaces unavailable delegated auditor. No broader waiver. Merge authorized; actual merged-main validation required before closure. https://github.com/vixttha/Harness-Instructions-for-Projects/issues/1#issuecomment-7192114122"
       ]
+    },
+    {
+      "issue": 3,
+      "version": "v0.0.0.2",
+      "state": "in_progress",
+      "acceptance": [
+        "Implement Python-only folder restructuring and packaging per owner lock in supporting #4, no Go edition or new features.",
+        "Account for all 11 .1 files and S001-S024 risk requirements in issue #3; preserve exact license, historical 23-blob manifest and immutable .1 receipts.",
+        "Preserve 33 baseline scenarios; add negative and positive cases, installed package, privacy, path/encoding, build integrity and rollback checks on standard free public runners.",
+        "Refresh Graphify/Veraphify mappings for actual candidate, update README, check original path and anchor reconciliation and branch isolation.",
+        "Independent Internal Auditor and Head/owner acceptance for .2; no automatic reuse of .1 exception. Exact candidate, actual merged main verification and closure required."
+      ]
     }
   ]
 }

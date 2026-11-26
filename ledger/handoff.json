@@ -1,6 +1,15 @@
 {
   "schema_version": 1,
-  "active": null,
+  "active": {
+    "issue": 3,
+    "version": "v0.0.0.2",
+    "phase": "Worker",
+    "next_action": "Reconcile the isolated repair draft against accepted main efb454701589593b7f7b46d52adc9ce10136e04e; implement all 24 risk controls; qualify runtime and builds. #4 is supporting only. No parallel active issue or .1 auditor exception reuse.",
+    "fix_sha": null,
+    "candidate_sha": null,
+    "pull_request": null,
+    "evidence": []
+  },
   "history": [
     {
       "handoff": {
