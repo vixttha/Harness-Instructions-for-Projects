@@ -3,11 +3,11 @@
   "active": {
     "issue": 1,
     "version": "v0.0.0.1",
-    "phase": "Worker",
-    "next_action": "Match approved VIB copyright line using repository pseudonym only; refresh PR and exact candidate evidence.",
-    "fix_sha": null,
-    "candidate_sha": null,
-    "pull_request": null,
+    "phase": "Validate",
+    "next_action": "Verify exact copyright-aligned candidate, run Graphify/Veraphify refresh, and collect actual CodeRabbit feedback. Independent auditor still required.",
+    "fix_sha": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
+    "candidate_sha": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
+    "pull_request": 2,
     "evidence": []
   },
   "history": [
