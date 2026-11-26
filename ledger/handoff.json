@@ -3,11 +3,11 @@
   "active": {
     "issue": 1,
     "version": "v0.0.0.1",
-    "phase": "Worker",
-    "next_action": "Repair HIP-A001 complete pinned source tree verification and duplicate JSON key rejection; HIP-A002 main push exact-SHA verification. Keep license notice provisional; no new features or other issue.",
-    "fix_sha": null,
-    "candidate_sha": null,
-    "pull_request": null,
+    "phase": "Validate",
+    "next_action": "Verify repaired exact candidate and synthetic merge on public runners; full pinned tree and strict JSON negative cases; no acceptance yet.",
+    "fix_sha": "c24b15388855943dbf33391d65ac3319461d90c7",
+    "candidate_sha": "c24b15388855943dbf33391d65ac3319461d90c7",
+    "pull_request": 2,
     "evidence": []
   },
   "history": [
