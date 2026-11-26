@@ -2,6 +2,8 @@
 
 HIP_LICENSE_TERMS_OWNER_SELECTED
 
+Copyright © 2026 vixttha, for the rights actually held.
+
 Harness Instructions for Projects (HIP) follows the owner-selected VIB licensing model, under the unmodified PolyForm Strict License 1.0.0, for original licensable HIP portions of these foundation source paths and their unchanged installed equivalents:
 
 - README.md
