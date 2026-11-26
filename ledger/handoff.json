@@ -3,8 +3,8 @@
   "active": {
     "issue": 1,
     "version": "v0.0.0.1",
-    "phase": "Internal Auditor",
-    "next_action": "All technical checks and permanent candidate evidence complete. Independent delegated review launch failed (Public API source actor could not be recovered). Obtain genuine independent verdict on exact candidate, then Head and owner disposition including supplemental license scope. Do not merge/close/activate .36 before gates.",
+    "phase": "Head",
+    "next_action": "Return licensing alignment to Worker; fix prior evidence URL schema; retain prior immutable receipts. Independent reviewer remains outstanding.",
     "fix_sha": "c24b15388855943dbf33391d65ac3319461d90c7",
     "candidate_sha": "c24b15388855943dbf33391d65ac3319461d90c7",
     "pull_request": 2,
@@ -12,9 +12,7 @@
       "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45795589252/attempts/1",
       "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45795599341/attempts/1",
       "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45797623456/attempts/1",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45797963366/attempts/1",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/blob/be5633b093e285e82bf28b7ca2ede0ecaeb6894b/hip/evidence/candidates/c24b15388855943dbf33391d65ac3319461d90c7/archive/4315fa982499a73f3c9f9750327c02c4db7e2fec8ff029f45831632e67aba6d4.json",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/issues/1#issuecomment-7188901106"
+      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45797963366/attempts/1"
     ]
   },
   "history": [
