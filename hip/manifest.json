@@ -1,0 +1,81 @@
+{
+  "repository": "vixttha/Harness-Instructions-for-Projects",
+  "source_commit": "50d0df4e2271894faf802b1727cf7fb2cd39d418",
+  "title": "HIP v0.0.0.1 foundation candidate",
+  "source_files": [
+    "tools/verify_archive.py",
+    "tests/test_bootstrap.py",
+    "README.md",
+    "docs/MIGRATION.md"
+  ],
+  "features": [
+    {
+      "id": "archive-integrity",
+      "label": "Pinned Instructions HQ archive integrity",
+      "documented_in": [
+        {
+          "path": "docs/MIGRATION.md",
+          "anchor": "Bootstrap verifies all pinned archive blobs without executing or publishing them. Reviewed migration must compare target and source, check privacy, preserve paths and license and record exact commit. If immutable source contains identifying data requiring exclusion, document conflict and retain upstream. ChatGPT Projects pilot requires owner-authorized settings installation/readback and fresh-chat behavior trials. Mechanical checks do not prove compliance or automatic settings sync."
+        }
+      ],
+      "changed_in": [
+        {
+          "path": "README.md",
+          "anchor": "Public GitHub-hosted Ubuntu only. Exact checkout, license, mechanical tests and read-only archive blob verification. A green run does not prove migration, live agent behavior or independent acceptance."
+        }
+      ],
+      "tested_by": [
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_inventory(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_path_escape(self):"
+        }
+      ],
+      "implemented_in": [
+        {
+          "path": "tools/verify_archive.py",
+          "anchor": "def verify_archive():"
+        },
+        {
+          "path": "tools/verify_archive.py",
+          "anchor": "def validate_manifest(manifest):"
+        }
+      ]
+    },
+    {
+      "id": "license-integrity",
+      "label": "Exact VIB license blob verification",
+      "documented_in": [
+        {
+          "path": "README.md",
+          "anchor": "## License"
+        }
+      ],
+      "changed_in": [
+        {
+          "path": "README.md",
+          "anchor": "[PolyForm Strict 1.0.0](LICENSE) for original rights-held HIP material, subject to [scope and supplemental permission](HIP-NOTICE.md). Existing MIT and other grants remain intact. No trademark rights or endorsement implied."
+        }
+      ],
+      "tested_by": [
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_exact_license(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_license_tamper_detected(self):"
+        }
+      ],
+      "implemented_in": [
+        {
+          "path": "tools/verify_archive.py",
+          "anchor": "def git_blob(data):"
+        }
+      ]
+    }
+  ]
+}

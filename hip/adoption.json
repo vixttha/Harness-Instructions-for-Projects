@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project": "vixttha/Harness-Instructions-for-Projects",
+  "version": "v0.0.0.1",
+  "status": "candidate_unaccepted",
+  "source_commit": "50d0df4e2271894faf802b1727cf7fb2cd39d418",
+  "issue": 1,
+  "pull_request": 2,
+  "tool_version": "v0.0.9",
+  "tool_source": "add4a029312c958a5e126990fc49e802c0112c27",
+  "merged_implementation": "ed5650085e33cf142a37de695757a4df999a7cf3",
+  "producer": "6af3c2025be3f51e02dca4e4502088c526aae6d1",
+  "upstream_blobs": {
+    "LICENSE": "1466aeaa07d9f7fd502ca697353b5feace5f4e5a",
+    "test-vault/LICENSE": "30e65839065c0ea88ca00a2de47d65de4313e154",
+    "veraphifiy.mjs": "49199c8992a2aaa49d58bff789729269da734421",
+    "test-vault/javascript/inspect-evidence.mjs": "951935535ea8566ac266afb9e954945e494211e9",
+    "docs/adopter-walkthrough.md": "7d58ddfdb7aae5d2989b151cd75cb725c16f2f20",
+    "docs/reuse.md": "0b2887ea185e4691fe5a074bf206c4dbd60eab5b",
+    "docs/verification.md": "0fcd7b13c5050b73ac272d3cc041a503d0683443"
+  },
+  "archive_status": "pending_runner_output",
+  "accepted_archive": null
+}

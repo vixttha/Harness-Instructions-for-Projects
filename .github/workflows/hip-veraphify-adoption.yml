@@ -1,0 +1,87 @@
+name: HIP Veraphify candidate evidence
+on:
+  push:
+    branches: ['Veraphify']
+permissions:
+  contents: read
+jobs:
+  evidence:
+    if: github.event.repository.visibility == 'public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        with:
+          node-version: '24.22.3'
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
+        with:
+          python-version: '3.12'
+      - name: Verify exact checkout and upstream package
+        env:
+          RUNNER_ENV: ${{ runner.environment }}
+        run: |
+          set -eu
+          test "$RUNNER_ENV" = github-hosted
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          m=json.loads(Path('hip/adoption.json').read_text())
+          for p,sha in m['upstream_blobs'].items():
+              b=Path(p).read_bytes()
+              assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==sha,p
+          print('Exact upstream blobs verified:',len(m['upstream_blobs']))
+          PY
+          node veraphifiy.mjs --help
+      - name: Build HIP Graphify evidence and verify Veraphify archive
+        env:
+          GRAPHIFY_QUERY_LOG_DISABLE: '1'
+          PYTHONHASHSEED: '0'
+        run: |
+          set -euo pipefail
+          root="$PWD"
+          work="$RUNNER_TEMP/hip-veraphify"
+          mkdir -p "$work/output"
+          git init -q "$work/source"
+          git -C "$work/source" fetch -q --no-tags --depth=1 https://github.com/vixttha/Harness-Instructions-for-Projects.git 50d0df4e2271894faf802b1727cf7fb2cd39d418
+          git -C "$work/source" checkout -q --detach 50d0df4e2271894faf802b1727cf7fb2cd39d418
+          test "$(git -C "$work/source" rev-parse HEAD)" = "50d0df4e2271894faf802b1727cf7fb2cd39d418"
+          git init -q "$work/kit"
+          git -C "$work/kit" fetch -q --no-tags --depth=1 https://github.com/vixttha/Blender-Agent-Refinement-Toolkit.git 6af3c2025be3f51e02dca4e4502088c526aae6d1
+          git -C "$work/kit" checkout -q --detach 6af3c2025be3f51e02dca4e4502088c526aae6d1
+          test "$(git -C "$work/kit" rev-parse HEAD)" = "6af3c2025be3f51e02dca4e4502088c526aae6d1"
+          kit="$work/kit/versions/v0.0.8"
+          python -m venv "$work/venv"
+          py="$work/venv/bin/python"
+          "$py" -m pip install --require-hashes --no-deps --only-binary=:all: -r "$kit/requirements.txt"
+          "$py" -m pip check
+          (cd "$work/source" && "$py" "$kit/evidence_map.py" "$root/hip/manifest.json" "$work/output/evidence")
+          cli="$root/veraphifiy.mjs"
+          node "$cli" import --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source 50d0df4e2271894faf802b1727cf7fb2cd39d418 --checkout "$work/source" --evidence "$work/output/evidence" > "$work/output/pins.json"
+          digest=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["archive_sha256"])' "$work/output/pins.json")
+          node "$cli" verify --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source 50d0df4e2271894faf802b1727cf7fb2cd39d418 --archive-sha256 "$digest"
+          for feature in archive-integrity license-integrity; do
+            node "$cli" lookup --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source 50d0df4e2271894faf802b1727cf7fb2cd39d418 --archive-sha256 "$digest" --feature "feature:$feature" > "$work/output/$feature.json"
+            cat "$work/output/$feature.json"
+          done
+          "$py" - "$work/output" <<'PY'
+          import json,sys
+          from pathlib import Path
+          p=Path(sys.argv[1])
+          for feature,count in [('archive-integrity',2),('license-integrity',1)]:
+              j=json.loads((p/(feature+'.json')).read_text())
+              assert j['source']=='50d0df4e2271894faf802b1727cf7fb2cd39d418' and j['version']=='v0.0.0.1'
+              assert len(j['citations'])==count and all(c['path']=='tools/verify_archive.py' for c in j['citations'])
+          print('HIP candidate lookup verified; archive SHA256 recorded in pins.json')
+          PY
+          cat "$work/output/pins.json"
+      - name: Retain candidate evidence
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: hip-v0.0.0.1-veraphify-candidate
+          path: ${{ runner.temp }}/hip-veraphify/output
+          if-no-files-found: error
+          retention-days: 30
