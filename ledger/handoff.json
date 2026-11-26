@@ -3,17 +3,12 @@
   "active": {
     "issue": 1,
     "version": "v0.0.0.1",
-    "phase": "Head",
-    "next_action": "CodeRabbit finding 4706968148: strict JSON accepts nonstandard constants. Owner authorized return for repair; independent gate still blocked.",
-    "fix_sha": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
-    "candidate_sha": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
-    "pull_request": 2,
-    "evidence": [
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45799993187/attempts/1",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45800004540/attempts/1",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45800103860/attempts/1",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45800249547/attempts/1"
-    ]
+    "phase": "Worker",
+    "next_action": "Repair strict JSON constants and add regression tests on existing PR #2.",
+    "fix_sha": null,
+    "candidate_sha": null,
+    "pull_request": null,
+    "evidence": []
   },
   "history": [
     {
@@ -72,6 +67,26 @@
       },
       "disposition": "rework",
       "decision": "Repair rights-qualified attribution and PR metadata; independent acceptance still required.",
+      "merged_sha": null
+    },
+    {
+      "handoff": {
+        "issue": 1,
+        "version": "v0.0.0.1",
+        "phase": "Head",
+        "next_action": "CodeRabbit finding 4706968148: strict JSON accepts nonstandard constants. Owner authorized return for repair; independent gate still blocked.",
+        "fix_sha": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
+        "candidate_sha": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
+        "pull_request": 2,
+        "evidence": [
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45799993187/attempts/1",
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45800004540/attempts/1",
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45800103860/attempts/1",
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45800249547/attempts/1"
+        ]
+      },
+      "disposition": "rework",
+      "decision": "Reject NaN and +/-Infinity at both JSON decode boundaries; add targeted tests; refresh evidence; no merge.",
       "merged_sha": null
     }
   ]
