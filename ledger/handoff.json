@@ -3,15 +3,31 @@
   "active": {
     "issue": 1,
     "version": "v0.0.0.1",
-    "phase": "Head",
-    "next_action": "Single-session audit found HIP-A001 full tree/strict JSON and HIP-A002 main push qualification; independent review outstanding. Head disposition: rework only, no acceptance.",
-    "fix_sha": "50d0df4e2271894faf802b1727cf7fb2cd39d418",
-    "candidate_sha": "50d0df4e2271894faf802b1727cf7fb2cd39d418",
-    "pull_request": 2,
-    "evidence": [
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45793045984/attempts/1",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45793088348/attempts/1"
-    ]
+    "phase": "Worker",
+    "next_action": "Repair HIP-A001 complete pinned source tree verification and duplicate JSON key rejection; HIP-A002 main push exact-SHA verification. Keep license notice provisional; no new features or other issue.",
+    "fix_sha": null,
+    "candidate_sha": null,
+    "pull_request": null,
+    "evidence": []
   },
-  "history": []
+  "history": [
+    {
+      "handoff": {
+        "issue": 1,
+        "version": "v0.0.0.1",
+        "phase": "Head",
+        "next_action": "Single-session audit found HIP-A001 full tree/strict JSON and HIP-A002 main push qualification; independent review outstanding. Head disposition: rework only, no acceptance.",
+        "fix_sha": "50d0df4e2271894faf802b1727cf7fb2cd39d418",
+        "candidate_sha": "50d0df4e2271894faf802b1727cf7fb2cd39d418",
+        "pull_request": 2,
+        "evidence": [
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45793045984/attempts/1",
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45793088348/attempts/1"
+        ]
+      },
+      "disposition": "rework",
+      "decision": "Repair HIP-A001 complete pinned source tree verification and duplicate JSON key rejection; HIP-A002 main push exact-SHA verification. Keep license notice provisional; no new features or other issue.",
+      "merged_sha": null
+    }
+  ]
 }
