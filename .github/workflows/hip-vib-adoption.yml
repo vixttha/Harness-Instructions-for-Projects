@@ -1,0 +1,43 @@
+name: HIP VIB adoption validation
+on:
+  push:
+    branches: ['Version-Issues-Hub']
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event.repository.visibility == 'public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Exact checkout and package integrity
+        env:
+          RUNNER_ENV: ${{ runner.environment }}
+        run: |
+          set -eu
+          test "$RUNNER_ENV" = github-hosted
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          from tools import checkpoint, session
+          m = json.loads(Path('vib-install.json').read_text())
+          assert m['target_repository'] == 'vixttha/Harness-Instructions-for-Projects'
+          assert m['target_repository_id'] == 1472944192
+          assert m['enforcement'] == 'disabled'
+          for p, digest in m['package_files_sha256'].items():
+              assert hashlib.sha256(Path(p).read_bytes()).hexdigest() == digest, p
+          ledger = json.loads(Path('ledger/issue-versions.json').read_text())
+          handoff = json.loads(Path('ledger/handoff.json').read_text())
+          assert checkpoint.bindings(ledger) == {1: 'v0.0.0.1'}
+          session.validate_handoff(handoff, ledger)
+          assert handoff['active']['phase'] == 'Internal Auditor'
+          print('12 package digests and HIP ledger/handoff passed')
+          PY
+      - name: Live read-only VIB inspect
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -m tools.session --target vixttha/Harness-Instructions-for-Projects inspect
