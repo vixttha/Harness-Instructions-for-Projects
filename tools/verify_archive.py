@@ -24,8 +24,12 @@ def strict_object(pairs):
     return result
 
 
+def reject_constant(token):
+    raise ValueError(f'Non-JSON numeric constant: {token}')
+
+
 def load_manifest(raw):
-    document = json.loads(raw, object_pairs_hook=strict_object)
+    document = json.loads(raw, object_pairs_hook=strict_object, parse_constant=reject_constant)
     if (not isinstance(document, dict)
             or type(document.get('schema_version')) is not int
             or document['schema_version'] != 1):
@@ -77,7 +81,7 @@ def verify_archive():
         raw = response.read(LIMIT + 1)
     if len(raw) > LIMIT:
         raise ValueError('Source tree response exceeds limit')
-    validate_source_tree(json.loads(raw, object_pairs_hook=strict_object), files)
+    validate_source_tree(json.loads(raw, object_pairs_hook=strict_object, parse_constant=reject_constant), files)
     print(f'Complete pinned source tree matches {len(files)} manifest paths.')
     for path, digest in sorted(files.items()):
         url = f'https://raw.githubusercontent.com/{REPO}/{COMMIT}/{path}'

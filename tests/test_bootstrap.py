@@ -1,8 +1,10 @@
 import copy
 import json
+import io
 from pathlib import Path
 import unittest
-from tools.verify_archive import git_blob, load_manifest, validate_manifest, validate_source_tree
+from unittest.mock import patch
+from tools.verify_archive import git_blob, load_manifest, validate_manifest, validate_source_tree, verify_archive
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -106,3 +108,39 @@ class BootstrapTests(unittest.TestCase):
         tree['tree'][0]['sha'] = '0' * 40
         with self.assertRaises(ValueError):
             validate_source_tree(tree, self.manifest['files'])
+
+    def check_manifest_constant(self, token):
+        raw = json.dumps({'schema_version': 1, 'archive': self.manifest})
+        raw = raw[:-1] + ', "observed_reference": {"value": ' + token + '}}'
+        with self.assertRaisesRegex(ValueError, 'Non-JSON numeric constant'):
+            load_manifest(raw)
+
+    def test_manifest_nan(self):
+        self.check_manifest_constant('NaN')
+
+    def test_manifest_infinity(self):
+        self.check_manifest_constant('Infinity')
+
+    def test_manifest_negative_infinity(self):
+        self.check_manifest_constant('-Infinity')
+
+    def test_valid_manifest_control(self):
+        raw = json.dumps({'schema_version': 1, 'archive': self.manifest,
+                          'observed_reference': {'value': 1.25, 'text': 'NaN'}})
+        self.assertEqual(load_manifest(raw), self.manifest['files'])
+
+    def check_tree_constant(self, token):
+        raw = json.dumps(self.source_tree())[:-1] + ', "observed": ' + token + '}'
+        with patch('tools.verify_archive.urlopen', return_value=io.BytesIO(raw.encode())) as request:
+            with self.assertRaisesRegex(ValueError, 'Non-JSON numeric constant'):
+                verify_archive()
+            self.assertEqual(request.call_count, 1)
+
+    def test_tree_nan(self):
+        self.check_tree_constant('NaN')
+
+    def test_tree_infinity(self):
+        self.check_tree_constant('Infinity')
+
+    def test_tree_negative_infinity(self):
+        self.check_tree_constant('-Infinity')
