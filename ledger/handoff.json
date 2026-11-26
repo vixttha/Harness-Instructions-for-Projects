@@ -3,12 +3,15 @@
   "active": {
     "issue": 1,
     "version": "v0.0.0.1",
-    "phase": "Validate",
-    "next_action": "Verify repaired exact candidate and synthetic merge on public runners; full pinned tree and strict JSON negative cases; no acceptance yet.",
+    "phase": "Internal Auditor",
+    "next_action": "Review repaired candidate independently, verify HIP-A001/A002, scope notice and exact public receipts. No merge or owner acceptance inferred. Prior Graphify map and .36 staging now stale; refresh only in sequence.",
     "fix_sha": "c24b15388855943dbf33391d65ac3319461d90c7",
     "candidate_sha": "c24b15388855943dbf33391d65ac3319461d90c7",
     "pull_request": 2,
-    "evidence": []
+    "evidence": [
+      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45795589252/attempts/1",
+      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45795599341/attempts/1"
+    ]
   },
   "history": [
     {
