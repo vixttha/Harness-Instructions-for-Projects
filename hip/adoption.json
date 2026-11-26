@@ -17,7 +17,8 @@
     "test-vault/javascript/inspect-evidence.mjs": "951935535ea8566ac266afb9e954945e494211e9",
     "docs/adopter-walkthrough.md": "7d58ddfdb7aae5d2989b151cd75cb725c16f2f20",
     "docs/reuse.md": "0b2887ea185e4691fe5a074bf206c4dbd60eab5b",
-    "docs/verification.md": "0fcd7b13c5050b73ac272d3cc041a503d0683443"
+    "docs/verification.md": "0fcd7b13c5050b73ac272d3cc041a503d0683443",
+    "test-vault/handoff-profile.json": "d5bf5921531cf4e4558adeb9dead1626ce8f77dc"
   },
   "archive_status": "pending_runner_output",
   "accepted_archive": null
