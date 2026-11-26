@@ -3,12 +3,17 @@
   "active": {
     "issue": 1,
     "version": "v0.0.0.1",
-    "phase": "Validate",
-    "next_action": "Verify exact copyright-aligned candidate, run Graphify/Veraphify refresh, and collect actual CodeRabbit feedback. Independent auditor still required.",
+    "phase": "Internal Auditor",
+    "next_action": "Attribution and PR metadata repairs validated. CodeRabbit review requested and processing; alternative Notion reviewer spawn rejected (INVALID_ARGUMENT). Genuine independent verdict remains blocked. No merge before Head/owner gates.",
     "fix_sha": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
     "candidate_sha": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
     "pull_request": 2,
-    "evidence": []
+    "evidence": [
+      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45799993187/attempts/1",
+      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45800004540/attempts/1",
+      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45800103860/attempts/1",
+      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45800249547/attempts/1"
+    ]
   },
   "history": [
     {
