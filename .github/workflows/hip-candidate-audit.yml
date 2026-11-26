@@ -4,7 +4,7 @@ on:
     branches: ['Veraphify']
     paths:
       - '.github/workflows/hip-candidate-audit.yml'
-      - 'hip/evidence/candidates/54e453047063dab32e4b2de043cee679e5472868/audit_boundaries.py'
+      - 'hip/evidence/candidates/66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d/audit_boundaries.py'
 permissions:
   contents: read
 jobs:
@@ -29,10 +29,10 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           source="$RUNNER_TEMP/hip-source"
           git init -q "$source"
-          git -C "$source" fetch -q --no-tags --depth=1 https://github.com/vixttha/Harness-Instructions-for-Projects.git 54e453047063dab32e4b2de043cee679e5472868
-          git -C "$source" checkout -q --detach 54e453047063dab32e4b2de043cee679e5472868
-          test "$(git -C "$source" rev-parse HEAD)" = "54e453047063dab32e4b2de043cee679e5472868"
-          python3 "hip/evidence/candidates/54e453047063dab32e4b2de043cee679e5472868/audit_boundaries.py" "$source"
-          printf '%s  %s\n' '03603eb163af7d9afd8c9093e09184bf2112131ff7b3ed2465d51416ed6ad7d8' 'hip/evidence/candidates/54e453047063dab32e4b2de043cee679e5472868/archive/4315fa982499a73f3c9f9750327c02c4db7e2fec8ff029f45831632e67aba6d4.json' | sha256sum -c -
-          node veraphifiy.mjs verify --archive 'hip/evidence/candidates/54e453047063dab32e4b2de043cee679e5472868/archive' --project 'vixttha/Harness-Instructions-for-Projects' --version v0.0.0.1 --source '54e453047063dab32e4b2de043cee679e5472868' --archive-sha256 '03603eb163af7d9afd8c9093e09184bf2112131ff7b3ed2465d51416ed6ad7d8'
+          git -C "$source" fetch -q --no-tags --depth=1 https://github.com/vixttha/Harness-Instructions-for-Projects.git 66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d
+          git -C "$source" checkout -q --detach 66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d
+          test "$(git -C "$source" rev-parse HEAD)" = "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d"
+          python3 "hip/evidence/candidates/66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d/audit_boundaries.py" "$source"
+          printf '%s  %s\n' '80f7e28d8cabc90c7d3a87ea41d2fa624c7e9f9c4eaad9622b55f156df167066' 'hip/evidence/candidates/66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d/archive/4315fa982499a73f3c9f9750327c02c4db7e2fec8ff029f45831632e67aba6d4.json' | sha256sum -c -
+          node veraphifiy.mjs verify --archive 'hip/evidence/candidates/66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d/archive' --project 'vixttha/Harness-Instructions-for-Projects' --version v0.0.0.1 --source '66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d' --archive-sha256 '80f7e28d8cabc90c7d3a87ea41d2fa624c7e9f9c4eaad9622b55f156df167066'
           echo 'Exact pinned source, eight supplemental boundary scenarios and permanent archive verified.'

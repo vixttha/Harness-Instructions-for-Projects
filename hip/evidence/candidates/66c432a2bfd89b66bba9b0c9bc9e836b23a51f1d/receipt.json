@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "candidate_unaccepted",
+  "source": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
+  "workflow_commit": "c78470c089cb0936896e1c373eb7655b58a541d2",
+  "run_id": 45800103860,
+  "job_id": 139840792037,
+  "attempt": 1,
+  "archive_path": "hip/evidence/candidates/66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d/archive/4315fa982499a73f3c9f9750327c02c4db7e2fec8ff029f45831632e67aba6d4.json",
+  "archive_git_blob": "4765c18a4b071edb687d3aea579c5a0340462de8",
+  "archive_sha256": "80f7e28d8cabc90c7d3a87ea41d2fa624c7e9f9c4eaad9622b55f156df167066",
+  "graph_sha256": "c9b7cf20cf05dffd583b4eab441a9a222ce21fb909caa38f6615de701c849c19",
+  "receipt_sha256": "92cefa32e6dbe51b562e41e000605decee0c8544ba3ca2c9b163c87545936eb5",
+  "nodes": 30,
+  "edges": 52,
+  "features": 2,
+  "artifact_id": 15106088804,
+  "artifact_zip_sha256": "d32e07c0ebf840f74c523bea636a0709d4984a2bf59fbf781e004733840a1c38"
+}
