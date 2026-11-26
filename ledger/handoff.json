@@ -3,8 +3,8 @@
   "active": {
     "issue": 1,
     "version": "v0.0.0.1",
-    "phase": "Internal Auditor",
-    "next_action": "License-aligned candidate validated; owner selected VIB-equivalent terms. Independent exact-revision reviewer retry underway; no final acceptance or merge inferred.",
+    "phase": "Head",
+    "next_action": "Coordinator conditional pass: copyright parity and stale PR description; independent reviewer blocked. Owner authorizes bounded repair.",
     "fix_sha": "54e453047063dab32e4b2de043cee679e5472868",
     "candidate_sha": "54e453047063dab32e4b2de043cee679e5472868",
     "pull_request": 2,
