@@ -3,11 +3,11 @@
   "active": {
     "issue": 1,
     "version": "v0.0.0.1",
-    "phase": "Worker",
-    "next_action": "Repair strict JSON constants and add regression tests on existing PR #2.",
-    "fix_sha": null,
-    "candidate_sha": null,
-    "pull_request": null,
+    "phase": "Validate",
+    "next_action": "Validate both strict JSON decode boundaries; seven new tests plus prior regressions; refresh Graphify and Veraphify; obtain CodeRabbit re-review.",
+    "fix_sha": "ad830cff949674d7c71a51d68e5edc5d426f9645",
+    "candidate_sha": "ad830cff949674d7c71a51d68e5edc5d426f9645",
+    "pull_request": 2,
     "evidence": []
   },
   "history": [
