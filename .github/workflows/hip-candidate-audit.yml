@@ -1,0 +1,38 @@
+name: HIP checkpoint candidate audit
+on:
+  push:
+    branches: ['Veraphify']
+    paths:
+      - '.github/workflows/hip-candidate-audit.yml'
+      - 'hip/evidence/candidates/c24b15388855943dbf33391d65ac3319461d90c7/audit_boundaries.py'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        with:
+          node-version: '24.22.3'
+      - name: Verify pinned archive and boundary scenarios
+        env:
+          RUNNER_ENV: ${{ runner.environment }}
+          REPO_VISIBILITY: ${{ github.event.repository.visibility }}
+        run: |
+          set -euo pipefail
+          test "$REPO_VISIBILITY" = public
+          test "$RUNNER_ENV" = github-hosted
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          source="$RUNNER_TEMP/hip-source"
+          git init -q "$source"
+          git -C "$source" fetch -q --no-tags --depth=1 https://github.com/vixttha/Harness-Instructions-for-Projects.git c24b15388855943dbf33391d65ac3319461d90c7
+          git -C "$source" checkout -q --detach c24b15388855943dbf33391d65ac3319461d90c7
+          test "$(git -C "$source" rev-parse HEAD)" = "c24b15388855943dbf33391d65ac3319461d90c7"
+          python3 "hip/evidence/candidates/c24b15388855943dbf33391d65ac3319461d90c7/audit_boundaries.py" "$source"
+          printf '%s  %s\n' 'b4e2808f740d97a2e7a4a7798a258d483dfe0306167a2cbb5d017ecbcf772508' 'hip/evidence/candidates/c24b15388855943dbf33391d65ac3319461d90c7/archive/4315fa982499a73f3c9f9750327c02c4db7e2fec8ff029f45831632e67aba6d4.json' | sha256sum -c -
+          node veraphifiy.mjs verify --archive 'hip/evidence/candidates/c24b15388855943dbf33391d65ac3319461d90c7/archive' --project 'vixttha/Harness-Instructions-for-Projects' --version v0.0.0.1 --source 'c24b15388855943dbf33391d65ac3319461d90c7' --archive-sha256 'b4e2808f740d97a2e7a4a7798a258d483dfe0306167a2cbb5d017ecbcf772508'
+          echo 'Exact pinned source, eight supplemental boundary scenarios and permanent archive verified.'
