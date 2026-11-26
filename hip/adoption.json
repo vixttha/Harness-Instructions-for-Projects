@@ -3,7 +3,7 @@
   "project": "vixttha/Harness-Instructions-for-Projects",
   "version": "v0.0.0.1",
   "status": "candidate_unaccepted",
-  "source_commit": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
+  "source_commit": "ad830cff949674d7c71a51d68e5edc5d426f9645",
   "issue": 1,
   "pull_request": 2,
   "tool_version": "v0.0.9",
@@ -22,5 +22,5 @@
   },
   "archive_status": "pending_runner_output",
   "accepted_archive": null,
-  "supersedes_candidate": "54e453047063dab32e4b2de043cee679e5472868"
+  "supersedes_candidate": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d"
 }

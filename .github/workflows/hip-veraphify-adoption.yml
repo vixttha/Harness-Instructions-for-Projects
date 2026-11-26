@@ -50,9 +50,9 @@ jobs:
           work="$RUNNER_TEMP/hip-veraphify"
           mkdir -p "$work/output"
           git init -q "$work/source"
-          git -C "$work/source" fetch -q --no-tags --depth=1 https://github.com/vixttha/Harness-Instructions-for-Projects.git 66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d
-          git -C "$work/source" checkout -q --detach 66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d
-          test "$(git -C "$work/source" rev-parse HEAD)" = "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d"
+          git -C "$work/source" fetch -q --no-tags --depth=1 https://github.com/vixttha/Harness-Instructions-for-Projects.git ad830cff949674d7c71a51d68e5edc5d426f9645
+          git -C "$work/source" checkout -q --detach ad830cff949674d7c71a51d68e5edc5d426f9645
+          test "$(git -C "$work/source" rev-parse HEAD)" = "ad830cff949674d7c71a51d68e5edc5d426f9645"
           git init -q "$work/kit"
           git -C "$work/kit" fetch -q --no-tags --depth=1 https://github.com/vixttha/Blender-Agent-Refinement-Toolkit.git 6af3c2025be3f51e02dca4e4502088c526aae6d1
           git -C "$work/kit" checkout -q --detach 6af3c2025be3f51e02dca4e4502088c526aae6d1
@@ -64,20 +64,20 @@ jobs:
           "$py" -m pip check
           (cd "$work/source" && "$py" "$kit/evidence_map.py" "$root/hip/manifest.json" "$work/output/evidence")
           cli="$root/veraphifiy.mjs"
-          node "$cli" import --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source 66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d --checkout "$work/source" --evidence "$work/output/evidence" > "$work/output/pins.json"
+          node "$cli" import --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source ad830cff949674d7c71a51d68e5edc5d426f9645 --checkout "$work/source" --evidence "$work/output/evidence" > "$work/output/pins.json"
           digest=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["archive_sha256"])' "$work/output/pins.json")
-          node "$cli" verify --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source 66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d --archive-sha256 "$digest"
+          node "$cli" verify --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source ad830cff949674d7c71a51d68e5edc5d426f9645 --archive-sha256 "$digest"
           for feature in archive-integrity license-integrity; do
-            node "$cli" lookup --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source 66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d --archive-sha256 "$digest" --feature "feature:$feature" > "$work/output/$feature.json"
+            node "$cli" lookup --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source ad830cff949674d7c71a51d68e5edc5d426f9645 --archive-sha256 "$digest" --feature "feature:$feature" > "$work/output/$feature.json"
             cat "$work/output/$feature.json"
           done
           "$py" - "$work/output" <<'PY'
           import json,sys
           from pathlib import Path
           p=Path(sys.argv[1])
-          for feature,count in [('archive-integrity',4),('license-integrity',1)]:
+          for feature,count in [('archive-integrity',5),('license-integrity',1)]:
               j=json.loads((p/(feature+'.json')).read_text())
-              assert j['source']=='66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d' and j['version']=='v0.0.0.1'
+              assert j['source']=='ad830cff949674d7c71a51d68e5edc5d426f9645' and j['version']=='v0.0.0.1'
               assert len(j['citations'])==count and all(c['path']=='tools/verify_archive.py' for c in j['citations'])
           print('HIP candidate lookup verified; archive SHA256 recorded in pins.json')
           PY

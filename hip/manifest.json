@@ -1,6 +1,6 @@
 {
   "repository": "vixttha/Harness-Instructions-for-Projects",
-  "source_commit": "66c432a2bfd89b66bba9b0c9bc9e836b23a51f1d",
+  "source_commit": "ad830cff949674d7c71a51d68e5edc5d426f9645",
   "title": "HIP v0.0.0.1 foundation candidate",
   "source_files": [
     "tools/verify_archive.py",
@@ -72,6 +72,34 @@
         {
           "path": "tests/test_bootstrap.py",
           "anchor": "def test_wrong_source_blob(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_manifest_nan(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_manifest_infinity(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_manifest_negative_infinity(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_valid_manifest_control(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_tree_nan(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_tree_infinity(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_tree_negative_infinity(self):"
         }
       ],
       "implemented_in": [
@@ -90,6 +118,10 @@
         {
           "path": "tools/verify_archive.py",
           "anchor": "def validate_source_tree(tree, files):"
+        },
+        {
+          "path": "tools/verify_archive.py",
+          "anchor": "def reject_constant(token):"
         }
       ]
     },
