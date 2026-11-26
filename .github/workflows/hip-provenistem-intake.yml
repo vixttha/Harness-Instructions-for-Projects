@@ -1,0 +1,35 @@
+name: HIP Provenistem record intake
+on:
+  push:
+    branches: [Provenistem]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify exact checkout and upstream copied blobs
+        env:
+          VISIBILITY: ${{ github.event.repository.visibility }}
+          RUNNER_ENV: ${{ runner.environment }}
+        run: |
+          set -eu
+          test "$VISIBILITY" = public
+          test "$RUNNER_ENV" = github-hosted
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          p = json.loads(Path('HIP-INTAKE.json').read_text())
+          for path, sha in p['source_paths'].items():
+              actual = subprocess.check_output(['git','hash-object',path], text=True).strip()
+              assert actual == sha, path
+          print(f"Verified {len(p['source_paths'])} copied upstream blobs")
+          PY
+          echo "tested=$GITHUB_SHA attempt=$GITHUB_RUN_ATTEMPT"
+      - name: Validate host-local records and indexes
+        run: python3 tools/library.py check

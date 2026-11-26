@@ -1,2 +1,3 @@
-# Harness-Instructions-for-Projects
-HIP — Harness Instructions for Projects. An instruction engineering toolkit for AI projects, designed to create, audit, refine, validate, version and maintain project instructions. Instructions by design.
+# HIP — Provenistem ideas intake
+
+Separate host-local record library, copied from [pinned upstream source](https://github.com/vixttha/Provenistem/tree/f676059bf15e466d18a0d49c317920c8c1160418/packages/provenistem). MIT license retained. See HIP-INTAKE.json for exact copied-file inventory. This is an explicitly requested record-only subset, not a full qualified installation. No upstream adopter catalog copied, no changes to HIP main or VIB ledger. [Ideas](ideas/INDEX.md) · [Features](features/INDEX.md) · [Lifecycle](docs/LIFECYCLE.md). Python stack adopted as a decision; Go edition parked until Python is completed and accepted. Neither record asserts implementation or release. Full adoption remains separately gated.

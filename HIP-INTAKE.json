@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_repository": "vixttha/Provenistem",
+  "source_commit": "f676059bf15e466d18a0d49c317920c8c1160418",
+  "source_paths": {
+    "LICENSE": "2fca5f35039b9b1eb3c3d193219411a9cf0765f1",
+    "ideas/README.md": "a95e1a3e4c5b5a94fdc7d2d9465baeafdadf7e77",
+    "ideas/schema/v1/idea.schema.json": "bbc4cb327a570632f65d0242bde3134aff210688",
+    "features/README.md": "8d755b25537f5e4bb3f5343398cfe280359aacc1",
+    "features/schema/v1/feature.schema.json": "7c296670856fe1f90787bb7e86093098fd8e635a",
+    "features/INDEX.md": "44d5387969b7c73996d2eb92b63bcbf8a1e5a80d",
+    "features/records/.gitkeep": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "templates/idea.example.json": "7bf5fca7557a705d7ce8f2c55149d1c64c5200d5",
+    "templates/feature.example.json": "ebd8e968acd10e68503e2a3fb1e2d0bf89625e51",
+    "docs/LIFECYCLE.md": "e3a35fe1f43fe6167892cc341813d6e1c7aba7bc",
+    "tools/library.py": "d5a98cf3d9fff02d21127028647d669a08a2a0a9"
+  },
+  "mode": "record-only isolated subset; not full adoption qualification",
+  "owner_decision": "https://github.com/vixttha/Harness-Instructions-for-Projects/issues/4#issuecomment-7191646673"
+}

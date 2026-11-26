@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "IDEA-000001",
+  "title": "Python-first HIP implementation",
+  "summary": "Python is sole first-party implementation language; Markdown instructions/docs, JSON contracts, YAML CI, TOML metadata, Bash minimal orchestration.",
+  "kind": "architecture",
+  "origin": {
+    "created_by": "human",
+    "source": "HIP issue #4 owner language lock: https://github.com/vixttha/Harness-Instructions-for-Projects/issues/4#issuecomment-7191646673"
+  },
+  "lifecycle_status": "adopted",
+  "implementation_status": "not_planned",
+  "testing": {
+    "status": "untested"
+  },
+  "importance": "high",
+  "complexity": "high",
+  "categories": [
+    "architecture",
+    "language"
+  ],
+  "benefits": [
+    "Single core runtime",
+    "Existing verifier and tests preserved"
+  ],
+  "risks": [
+    "Packaging and runtime compatibility require qualification"
+  ],
+  "related_ideas": [],
+  "evidence": [],
+  "decision": {
+    "decided_by": "owner",
+    "decided_at": "2026-11-26T12:09:46Z",
+    "reason": "Owner explicitly locked stack; .2 implementation and runtime qualification remain gated."
+  }
+}
