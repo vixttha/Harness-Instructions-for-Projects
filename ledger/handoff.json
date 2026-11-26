@@ -3,8 +3,8 @@
   "active": {
     "issue": 1,
     "version": "v0.0.0.1",
-    "phase": "Internal Auditor",
-    "next_action": "Independently review draft PR #2 and exact public-runner evidence; Head/owner disposition required. Do not merge or claim a second active issue.",
+    "phase": "Head",
+    "next_action": "Single-session audit found HIP-A001 full tree/strict JSON and HIP-A002 main push qualification; independent review outstanding. Head disposition: rework only, no acceptance.",
     "fix_sha": "50d0df4e2271894faf802b1727cf7fb2cd39d418",
     "candidate_sha": "50d0df4e2271894faf802b1727cf7fb2cd39d418",
     "pull_request": 2,
