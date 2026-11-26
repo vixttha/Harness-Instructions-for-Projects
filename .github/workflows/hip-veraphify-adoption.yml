@@ -2,6 +2,10 @@ name: HIP Veraphify candidate evidence
 on:
   push:
     branches: ['Veraphify']
+    paths:
+      - '.github/workflows/hip-veraphify-adoption.yml'
+      - 'hip/manifest.json'
+      - 'hip/adoption.json'
 permissions:
   contents: read
 jobs:
@@ -46,9 +50,9 @@ jobs:
           work="$RUNNER_TEMP/hip-veraphify"
           mkdir -p "$work/output"
           git init -q "$work/source"
-          git -C "$work/source" fetch -q --no-tags --depth=1 https://github.com/vixttha/Harness-Instructions-for-Projects.git 50d0df4e2271894faf802b1727cf7fb2cd39d418
-          git -C "$work/source" checkout -q --detach 50d0df4e2271894faf802b1727cf7fb2cd39d418
-          test "$(git -C "$work/source" rev-parse HEAD)" = "50d0df4e2271894faf802b1727cf7fb2cd39d418"
+          git -C "$work/source" fetch -q --no-tags --depth=1 https://github.com/vixttha/Harness-Instructions-for-Projects.git c24b15388855943dbf33391d65ac3319461d90c7
+          git -C "$work/source" checkout -q --detach c24b15388855943dbf33391d65ac3319461d90c7
+          test "$(git -C "$work/source" rev-parse HEAD)" = "c24b15388855943dbf33391d65ac3319461d90c7"
           git init -q "$work/kit"
           git -C "$work/kit" fetch -q --no-tags --depth=1 https://github.com/vixttha/Blender-Agent-Refinement-Toolkit.git 6af3c2025be3f51e02dca4e4502088c526aae6d1
           git -C "$work/kit" checkout -q --detach 6af3c2025be3f51e02dca4e4502088c526aae6d1
@@ -60,24 +64,37 @@ jobs:
           "$py" -m pip check
           (cd "$work/source" && "$py" "$kit/evidence_map.py" "$root/hip/manifest.json" "$work/output/evidence")
           cli="$root/veraphifiy.mjs"
-          node "$cli" import --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source 50d0df4e2271894faf802b1727cf7fb2cd39d418 --checkout "$work/source" --evidence "$work/output/evidence" > "$work/output/pins.json"
+          node "$cli" import --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source c24b15388855943dbf33391d65ac3319461d90c7 --checkout "$work/source" --evidence "$work/output/evidence" > "$work/output/pins.json"
           digest=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["archive_sha256"])' "$work/output/pins.json")
-          node "$cli" verify --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source 50d0df4e2271894faf802b1727cf7fb2cd39d418 --archive-sha256 "$digest"
+          node "$cli" verify --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source c24b15388855943dbf33391d65ac3319461d90c7 --archive-sha256 "$digest"
           for feature in archive-integrity license-integrity; do
-            node "$cli" lookup --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source 50d0df4e2271894faf802b1727cf7fb2cd39d418 --archive-sha256 "$digest" --feature "feature:$feature" > "$work/output/$feature.json"
+            node "$cli" lookup --archive "$work/output/archive" --project vixttha/Harness-Instructions-for-Projects --version v0.0.0.1 --source c24b15388855943dbf33391d65ac3319461d90c7 --archive-sha256 "$digest" --feature "feature:$feature" > "$work/output/$feature.json"
             cat "$work/output/$feature.json"
           done
           "$py" - "$work/output" <<'PY'
           import json,sys
           from pathlib import Path
           p=Path(sys.argv[1])
-          for feature,count in [('archive-integrity',2),('license-integrity',1)]:
+          for feature,count in [('archive-integrity',4),('license-integrity',1)]:
               j=json.loads((p/(feature+'.json')).read_text())
-              assert j['source']=='50d0df4e2271894faf802b1727cf7fb2cd39d418' and j['version']=='v0.0.0.1'
+              assert j['source']=='c24b15388855943dbf33391d65ac3319461d90c7' and j['version']=='v0.0.0.1'
               assert len(j['citations'])==count and all(c['path']=='tools/verify_archive.py' for c in j['citations'])
           print('HIP candidate lookup verified; archive SHA256 recorded in pins.json')
           PY
           cat "$work/output/pins.json"
+          "$py" - "$work/output/archive" <<'PY'
+          import base64,sys,hashlib
+          from pathlib import Path
+          entries=list(Path(sys.argv[1]).glob('*.json'))
+          assert len(entries)==1
+          p=entries[0]
+          data=p.read_bytes()
+          assert len(data)<=500000
+          print('HIP_ARCHIVE_FILE '+p.name+' '+hashlib.sha256(data).hexdigest())
+          encoded=base64.b64encode(data).decode('ascii')
+          for i in range(0,len(encoded),2000):
+              print('HIP_ARCHIVE_CHUNK '+str(i//2000)+' '+encoded[i:i+2000])
+          PY
       - name: Retain candidate evidence
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:

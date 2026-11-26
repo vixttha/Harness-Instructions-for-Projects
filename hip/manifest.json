@@ -1,6 +1,6 @@
 {
   "repository": "vixttha/Harness-Instructions-for-Projects",
-  "source_commit": "50d0df4e2271894faf802b1727cf7fb2cd39d418",
+  "source_commit": "c24b15388855943dbf33391d65ac3319461d90c7",
   "title": "HIP v0.0.0.1 foundation candidate",
   "source_files": [
     "tools/verify_archive.py",
@@ -32,6 +32,46 @@
         {
           "path": "tests/test_bootstrap.py",
           "anchor": "def test_path_escape(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_exact_source_tree(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_substituted_path_same_count(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_truncated_tree(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_duplicate_source_path(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_nonregular_source_entry(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_duplicate_json_key(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_invalid_schema_version(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_invalid_manifest_type(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_nested_duplicate_key(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_wrong_source_blob(self):"
         }
       ],
       "implemented_in": [
@@ -42,6 +82,14 @@
         {
           "path": "tools/verify_archive.py",
           "anchor": "def validate_manifest(manifest):"
+        },
+        {
+          "path": "tools/verify_archive.py",
+          "anchor": "def load_manifest(raw):"
+        },
+        {
+          "path": "tools/verify_archive.py",
+          "anchor": "def validate_source_tree(tree, files):"
         }
       ]
     },

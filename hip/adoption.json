@@ -3,7 +3,7 @@
   "project": "vixttha/Harness-Instructions-for-Projects",
   "version": "v0.0.0.1",
   "status": "candidate_unaccepted",
-  "source_commit": "50d0df4e2271894faf802b1727cf7fb2cd39d418",
+  "source_commit": "c24b15388855943dbf33391d65ac3319461d90c7",
   "issue": 1,
   "pull_request": 2,
   "tool_version": "v0.0.9",
@@ -21,5 +21,6 @@
     "test-vault/handoff-profile.json": "d5bf5921531cf4e4558adeb9dead1626ce8f77dc"
   },
   "archive_status": "pending_runner_output",
-  "accepted_archive": null
+  "accepted_archive": null,
+  "supersedes_candidate": "50d0df4e2271894faf802b1727cf7fb2cd39d418"
 }
