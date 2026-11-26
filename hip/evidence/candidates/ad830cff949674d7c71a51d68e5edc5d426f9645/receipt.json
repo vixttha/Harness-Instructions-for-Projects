@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "candidate_unaccepted",
+  "source": "ad830cff949674d7c71a51d68e5edc5d426f9645",
+  "workflow_commit": "6d92696b82f76b15a8eb20c5f8ccf3073dd9cffe",
+  "run_id": 45802395514,
+  "job_id": 139848711192,
+  "attempt": 1,
+  "archive_path": "hip/evidence/candidates/ad830cff949674d7c71a51d68e5edc5d426f9645/archive/4315fa982499a73f3c9f9750327c02c4db7e2fec8ff029f45831632e67aba6d4.json",
+  "archive_git_blob": "ca507e905f17121206330d7514b28c53247219a2",
+  "archive_sha256": "32f9918b0d09a94cee701e669e224e60be14f66c9d37f94841bdbc433e751b71",
+  "graph_sha256": "5c757629f4be41c5cdf4a8b51439827d05487bef93505bea5aa44044e6e136f3",
+  "receipt_sha256": "9248506abd66fd7a4b13020aa6a047e6c4a822b5cb0e2b9f549ff8d5e0fcfc83",
+  "nodes": 41,
+  "edges": 75,
+  "features": 3,
+  "artifact_id": 15107108144,
+  "artifact_zip_sha256": "7566de54cd2de15cd5013dcce9b0ad18ad007d7bba3cbed98059c213026ca098",
+  "prior_failed_run": 45802219465,
+  "correction": "Split strict JSON evidence into separate feature to respect 12-reference limit."
+}
