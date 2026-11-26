@@ -72,34 +72,6 @@
         {
           "path": "tests/test_bootstrap.py",
           "anchor": "def test_wrong_source_blob(self):"
-        },
-        {
-          "path": "tests/test_bootstrap.py",
-          "anchor": "def test_manifest_nan(self):"
-        },
-        {
-          "path": "tests/test_bootstrap.py",
-          "anchor": "def test_manifest_infinity(self):"
-        },
-        {
-          "path": "tests/test_bootstrap.py",
-          "anchor": "def test_manifest_negative_infinity(self):"
-        },
-        {
-          "path": "tests/test_bootstrap.py",
-          "anchor": "def test_valid_manifest_control(self):"
-        },
-        {
-          "path": "tests/test_bootstrap.py",
-          "anchor": "def test_tree_nan(self):"
-        },
-        {
-          "path": "tests/test_bootstrap.py",
-          "anchor": "def test_tree_infinity(self):"
-        },
-        {
-          "path": "tests/test_bootstrap.py",
-          "anchor": "def test_tree_negative_infinity(self):"
         }
       ],
       "implemented_in": [
@@ -118,10 +90,6 @@
         {
           "path": "tools/verify_archive.py",
           "anchor": "def validate_source_tree(tree, files):"
-        },
-        {
-          "path": "tools/verify_archive.py",
-          "anchor": "def reject_constant(token):"
         }
       ]
     },
@@ -154,6 +122,66 @@
         {
           "path": "tools/verify_archive.py",
           "anchor": "def git_blob(data):"
+        }
+      ]
+    },
+    {
+      "id": "strict-json-constants",
+      "label": "Reject nonstandard numeric constants at both JSON decode boundaries",
+      "documented_in": [
+        {
+          "path": "README.md",
+          "anchor": "Public GitHub-hosted Ubuntu only. Exact checkout, license, mechanical tests and read-only archive blob verification. A green run does not prove migration, live agent behavior or independent acceptance."
+        }
+      ],
+      "changed_in": [
+        {
+          "path": "tools/verify_archive.py",
+          "anchor": "def reject_constant(token):"
+        }
+      ],
+      "tested_by": [
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_manifest_nan(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_manifest_infinity(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_manifest_negative_infinity(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_valid_manifest_control(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_tree_nan(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_tree_infinity(self):"
+        },
+        {
+          "path": "tests/test_bootstrap.py",
+          "anchor": "def test_tree_negative_infinity(self):"
+        }
+      ],
+      "implemented_in": [
+        {
+          "path": "tools/verify_archive.py",
+          "anchor": "def reject_constant(token):"
+        },
+        {
+          "path": "tools/verify_archive.py",
+          "anchor": "def verify_archive():"
+        },
+        {
+          "path": "tools/verify_archive.py",
+          "anchor": "def load_manifest(raw):"
         }
       ]
     }
