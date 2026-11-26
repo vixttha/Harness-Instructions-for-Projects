@@ -32,10 +32,12 @@ jobs:
               assert hashlib.sha256(Path(p).read_bytes()).hexdigest() == digest, p
           ledger = json.loads(Path('ledger/issue-versions.json').read_text())
           handoff = json.loads(Path('ledger/handoff.json').read_text())
-          assert checkpoint.bindings(ledger) == {1: 'v0.0.0.1'}
+          assert checkpoint.bindings(ledger).get(1) == 'v0.0.0.1'
           session.validate_handoff(handoff, ledger)
-          assert handoff['active']['phase'] == 'Internal Auditor'
-          print('12 package digests and HIP ledger/handoff passed')
+          active = handoff['active']
+          in_progress = [row['issue'] for row in ledger['issues'] if row['state'] == 'in_progress']
+          assert in_progress == ([active['issue']] if active else []), 'Active lane mismatch'
+          print('Package digests and HIP ledger/handoff passed')
           PY
       - name: Live read-only VIB inspect
         env:

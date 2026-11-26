@@ -1,21 +1,6 @@
 {
   "schema_version": 1,
-  "active": {
-    "issue": 1,
-    "version": "v0.0.0.1",
-    "phase": "Head",
-    "next_action": "Owner-approved replacement audit accepted for .1 only; Head technical integration approved on exact SHA; merge guarded head and validate actual main before closure. https://github.com/vixttha/Harness-Instructions-for-Projects/issues/1#issuecomment-7192114122",
-    "fix_sha": "ad830cff949674d7c71a51d68e5edc5d426f9645",
-    "candidate_sha": "ad830cff949674d7c71a51d68e5edc5d426f9645",
-    "pull_request": 2,
-    "evidence": [
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45802120399/attempts/1",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45802128001/attempts/1",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45802395514/attempts/1",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45802522948/attempts/1",
-      "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45802617509/attempts/1"
-    ]
-  },
+  "active": null,
   "history": [
     {
       "handoff": {
@@ -94,6 +79,28 @@
       "disposition": "rework",
       "decision": "Reject NaN and +/-Infinity at both JSON decode boundaries; add targeted tests; refresh evidence; no merge.",
       "merged_sha": null
+    },
+    {
+      "handoff": {
+        "issue": 1,
+        "version": "v0.0.0.1",
+        "phase": "Head",
+        "next_action": "Actual merged main tree identical to approved candidate; postmerge 25/25 tests and 23/23 source blobs passed. Integrated; preserve historical evidence.",
+        "fix_sha": "ad830cff949674d7c71a51d68e5edc5d426f9645",
+        "candidate_sha": "ad830cff949674d7c71a51d68e5edc5d426f9645",
+        "pull_request": 2,
+        "evidence": [
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45802120399/attempts/1",
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45802128001/attempts/1",
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45802395514/attempts/1",
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45802522948/attempts/1",
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45802617509/attempts/1",
+          "https://github.com/vixttha/Harness-Instructions-for-Projects/actions/runs/45820511049/attempts/1"
+        ]
+      },
+      "disposition": "integrated",
+      "decision": "Owner-approved .1 replacement acceptance (issue comment 7192114122); Head accepts exact merged SHA after postmerge public runner verification. No independent Notion verdict or commercial release claimed.",
+      "merged_sha": "efb454701589593b7f7b46d52adc9ce10136e04e"
     }
   ]
 }

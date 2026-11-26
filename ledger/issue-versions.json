@@ -5,7 +5,7 @@
     {
       "issue": 1,
       "version": "v0.0.0.1",
-      "state": "in_progress",
+      "state": "integrated",
       "acceptance": [
         "Commit approved provisional identity, both slogans and original toolkit scope.",
         "Match the exact VIB PolyForm Strict 1.0.0 license blob `90abd0e6c64a135f42451762337a397bf27f4862`; adapt supplemental permission, preserve earlier MIT grants and separate rights review.",
