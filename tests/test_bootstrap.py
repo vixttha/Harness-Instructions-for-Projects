@@ -2,7 +2,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
-from tools.verify_archive import git_blob, validate_manifest
+from tools.verify_archive import git_blob, load_manifest, validate_manifest, validate_source_tree
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -49,3 +49,60 @@ class BootstrapTests(unittest.TestCase):
         value['files']['README.md'] = 'invalid'
         with self.assertRaises(ValueError):
             validate_manifest(value)
+
+    def source_tree(self):
+        return {'truncated': False, 'tree': [
+            {'path': path, 'type': 'blob', 'mode': '100644', 'sha': digest}
+            for path, digest in self.manifest['files'].items()
+        ]}
+
+    def test_exact_source_tree(self):
+        validate_source_tree(self.source_tree(), self.manifest['files'])
+
+    def test_substituted_path_same_count(self):
+        tree = self.source_tree()
+        tree['tree'][0]['path'] = 'unlisted.md'
+        with self.assertRaises(ValueError):
+            validate_source_tree(tree, self.manifest['files'])
+
+    def test_truncated_tree(self):
+        tree = self.source_tree()
+        tree['truncated'] = True
+        with self.assertRaises(ValueError):
+            validate_source_tree(tree, self.manifest['files'])
+
+    def test_duplicate_source_path(self):
+        tree = self.source_tree()
+        tree['tree'].append(tree['tree'][0].copy())
+        with self.assertRaises(ValueError):
+            validate_source_tree(tree, self.manifest['files'])
+
+    def test_nonregular_source_entry(self):
+        tree = self.source_tree()
+        tree['tree'][0]['mode'] = '120000'
+        with self.assertRaises(ValueError):
+            validate_source_tree(tree, self.manifest['files'])
+
+    def test_duplicate_json_key(self):
+        with self.assertRaises(ValueError):
+            load_manifest('{"schema_version":1,"schema_version":1}')
+
+    def test_invalid_schema_version(self):
+        with self.assertRaises(ValueError):
+            load_manifest(json.dumps({'schema_version': True, 'archive': self.manifest}))
+
+    def test_invalid_manifest_type(self):
+        with self.assertRaises(ValueError):
+            validate_manifest(None)
+
+    def test_nested_duplicate_key(self):
+        raw = json.dumps({'schema_version': 1, 'archive': self.manifest})
+        raw = raw.replace('"files": {', '"files": {"LICENSE": "' + '0' * 40 + '", ', 1)
+        with self.assertRaises(ValueError):
+            load_manifest(raw)
+
+    def test_wrong_source_blob(self):
+        tree = self.source_tree()
+        tree['tree'][0]['sha'] = '0' * 40
+        with self.assertRaises(ValueError):
+            validate_source_tree(tree, self.manifest['files'])
