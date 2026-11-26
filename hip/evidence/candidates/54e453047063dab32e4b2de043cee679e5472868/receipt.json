@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "candidate_unaccepted",
+  "source": "54e453047063dab32e4b2de043cee679e5472868",
+  "workflow_commit": "361f719a576c00dd61868c4626ade763b37a2292",
+  "run_id": 45798825403,
+  "job_id": 139836369233,
+  "attempt": 1,
+  "archive_path": "hip/evidence/candidates/54e453047063dab32e4b2de043cee679e5472868/archive/4315fa982499a73f3c9f9750327c02c4db7e2fec8ff029f45831632e67aba6d4.json",
+  "archive_git_blob": "f6e803684718f9804dccb2a79333049e5cc104db",
+  "archive_sha256": "03603eb163af7d9afd8c9093e09184bf2112131ff7b3ed2465d51416ed6ad7d8",
+  "graph_sha256": "0699ad4487fa99c8829765384906ce21a13e9ab67e2f3f3c72c7df9153451e93",
+  "receipt_sha256": "870c6d6f514b82213a44fdd8aa2407e8dce55c39da5afa6c366c2c51bd90a31b",
+  "nodes": 30,
+  "edges": 52,
+  "features": 2,
+  "artifact_id": 15105498556,
+  "artifact_zip_sha256": "183a5e42a891f819854b07a582a5cdfe1cfae782ca9f4c5c3eceacc428e9956e"
+}
