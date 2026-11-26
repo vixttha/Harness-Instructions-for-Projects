@@ -4,5 +4,5 @@
 
 | ID | Idea | Lifecycle | Implementation |
 | --- | --- | --- | --- |
-| IDEA-000001 | Python-first HIP implementation | adopted | not_planned |
-| IDEA-000002 | Future standalone Go edition of HIP | parked | not_planned |
+| IDEA-000001 | Python-first HIP implementation | adopted | not\_planned |
+| IDEA-000002 | Future standalone Go edition of HIP | parked | not\_planned |
