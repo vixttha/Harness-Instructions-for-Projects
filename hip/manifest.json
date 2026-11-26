@@ -1,6 +1,6 @@
 {
   "repository": "vixttha/Harness-Instructions-for-Projects",
-  "source_commit": "c24b15388855943dbf33391d65ac3319461d90c7",
+  "source_commit": "54e453047063dab32e4b2de043cee679e5472868",
   "title": "HIP v0.0.0.1 foundation candidate",
   "source_files": [
     "tools/verify_archive.py",
