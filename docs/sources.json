@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "archive": {
+    "repository": "vixttha/Blender-Agent-Refinement-Toolkit",
+    "commit": "b63b7b68495abcce76dfbc4341aa149ea15e0049",
+    "files": {
+      ".github/workflows/instructions-archive.yml": "c921471edda7bf7d36ab1dc843b2519e8842786c",
+      "LICENSE": "3a31b6b1dcedea9bb0ca27243d3d7b0cb504a4f5",
+      "README.md": "04a38a561718e4c54318b01da63d4fee378465cf",
+      "graphify/README.md": "91fc13d2f1572867f96a88df4f71d4db1818ad1d",
+      "graphify/instructions/v0.0.2/graph.json": "d57f553062468c0fb67293174def280a84613efa",
+      "graphify/instructions/v0.0.2/receipt.json": "65c947082f9cfd8f61f0a5f016823a22fdc035af",
+      "graphify/versions.json": "a6265a130b70b7e6f2e33a3c7031467e6e87696a",
+      "graphify/versions.mmd": "ccb5a010419a651901b0010a470cb775ce72807d",
+      "scripts/build_instructions_graph.py": "fdafdd5793891488aa6c120f36619fc8fdfa82ea",
+      "scripts/test_validate_archive.py": "e3e7b11fffd70e3feb68128f080f5ea992e650c7",
+      "scripts/validate_archive.py": "c0e8dd4c86ac409b959bf5d5dc077f653799377d",
+      "v0.0.1/ACCEPTANCE.md": "79ce5b20448fc2a3d2cf194c0f0cb6f0861227df",
+      "v0.0.1/CHATGPT_PROJECT_INSTRUCTIONS.md": "0eb257f57441bff3880d9584e521605835adb7e5",
+      "v0.0.1/README.md": "351a6fc05b8878603d1ab417edcc5f1f9e3069f2",
+      "v0.0.1/VERIFICATION.md": "9e1e1570fc0c06c837fa5fdf6764714595189f8a",
+      "v0.0.2/ACCEPTANCE.md": "6115e6a121c55a0ece9b97d372573fa81d89a955",
+      "v0.0.2/CHATGPT_PROJECT_INSTRUCTIONS.md": "6c7b75a5e45e5da93ea25f90d702d7d3eccb3b47",
+      "v0.0.2/README.md": "31452924b127d4127e58438cb3c472f2a19d3531",
+      "v0.0.2/VERIFICATION.md": "ae825e27d9b424c5dfa29f81cc6f27b9400c936b",
+      "v0.0.3/ACCEPTANCE.md": "7aa4604ac5f88859966dc3a61ee86705b30f0692",
+      "v0.0.3/CHATGPT_PROJECT_INSTRUCTIONS.md": "e946e9f9f179eed604f537a852c4941786d5a1cd",
+      "v0.0.3/README.md": "ed7fc5f1bcbfbd99256a09457c679ab2d6ba2a96",
+      "v0.0.3/VERIFICATION.md": "28377b5f5729b1be6f7eb0fd131268b6a9032fe2"
+    }
+  },
+  "observed_upstream_refs_not_install_approvals": {
+    "VIB_legal": "44573ae95e143116caacd891c842065a6d32743f",
+    "VIB_current_installed_source": "4fc9ac47462101b941ea2f78fc939d42a9de0032",
+    "VIB_open_37": "041e187dc1d383082c1a4805e6d4743eec97e535",
+    "Veraphify_main": "add4a029312c958a5e126990fc49e802c0112c27",
+    "Provenistem_v0_0_2": "e36fcd6d12633395e9b573228c0797ade9e775b0",
+    "Brand_Identity_main": "74a4666404fb4aa427881d0907cacbc8c65e2cfc",
+    "README_HQ_readme_hq_branch": "b1bbc9a72a5193afcaeaf823f097753070bfa43f",
+    "Lydite_main": "eae4c9d9d56ed132b400d7c0f56a9babfe5cba07"
+  }
+}

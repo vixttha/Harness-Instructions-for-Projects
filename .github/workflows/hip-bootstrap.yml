@@ -1,0 +1,32 @@
+name: HIP bootstrap verification
+on:
+  push:
+    branches: ['hip-bootstrap-v0.0.0.1']
+  pull_request:
+    branches: ['main']
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event.repository.visibility == 'public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify exact checkout and runner policy
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+          REPO_VISIBILITY: ${{ github.event.repository.visibility }}
+          RUNNER_ENV: ${{ runner.environment }}
+        run: |
+          set -eu
+          test "$REPO_VISIBILITY" = public
+          test "$RUNNER_ENV" = github-hosted
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          echo "tested=$EXPECTED_SHA runner=$RUNNER_ENV attempt=$GITHUB_RUN_ATTEMPT"
+      - name: Mechanical bootstrap tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Verify historical archive bytes (read-only)
+        run: python3 tools/verify_archive.py
